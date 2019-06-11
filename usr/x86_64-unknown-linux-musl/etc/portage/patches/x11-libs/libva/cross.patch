@@ -1,0 +1,11 @@
+--- libva-2.4.0.old/configure.ac
++++ libva-2.4.0/configure.ac
+@@ -297,7 +297,7 @@
+ 
+         WAYLAND_PREFIX=`$PKG_CONFIG --variable=prefix wayland-client`
+         AC_PATH_PROG([WAYLAND_SCANNER], [wayland-scanner],,
+-                     [${WAYLAND_PREFIX}/bin$PATH_SEPARATOR$PATH])
++                     [/usr/bin$PATH_SEPARATOR$PATH])
+         if test "x$WAYLAND_SCANNER" = "x"; then
+             AC_MSG_ERROR([wayland-scanner not found: Install it or use --disable-wayland])
+         fi

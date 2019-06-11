@@ -1,0 +1,13 @@
+diff -urN old/configure.ac new/configure.ac
+--- old/configure.ac	2019-01-21 13:28:03.000000000 -0000
++++ new/configure.ac	2019-01-28 07:33:50.543451157 -0000
+@@ -1750,7 +1750,8 @@
+ # GObject introspection
+ ##################################################
+ 
+-GOBJECT_INTROSPECTION_CHECK(introspection_required_version)
++# GOBJECT_INTROSPECTION_CHECK(introspection_required_version)
++AM_CONDITIONAL([HAVE_INTROSPECTION], [false])
+ 
+ ##################################################
+ # colord module

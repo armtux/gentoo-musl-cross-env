@@ -1,0 +1,2 @@
+www-client/firefox python_compat_override36.conf ldflags-rpath.conf
+#www-client/firefox python_compat_override36.conf ldflags-rpath.conf debug.conf

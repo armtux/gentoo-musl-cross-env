@@ -1,0 +1,12 @@
+diff -urN old/configure new/configure
+--- old/configure	2018-11-05 23:22:33.000000000 -0000
++++ new/configure	2019-01-28 04:34:48.958643313 -0000
+@@ -4626,7 +4626,7 @@
+ fi
+ 
+ if test "$cpu" = host; then
+-    enabled cross_compile &&
++    enabled cross_compile && test "$arch" != x86 &&
+         die "--cpu=host makes no sense when cross-compiling."
+ 
+     case "$cc_type" in

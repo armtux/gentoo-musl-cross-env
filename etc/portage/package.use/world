@@ -1,0 +1,2 @@
+net-libs/nodejs bundled-ssl -npm -snapshot
+dev-db/sqlite secure-delete

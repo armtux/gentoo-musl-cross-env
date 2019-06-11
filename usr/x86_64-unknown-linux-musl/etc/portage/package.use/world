@@ -1,0 +1,35 @@
+sys-fs/eudev kmod
+sys-apps/busybox -static make-symlinks savedconfig syslog
+dev-libs/libpcre -bzip2
+app-admin/pwgen livecd
+net-irc/irssi -perl
+sys-apps/util-linux -cramfs
+net-firewall/iptables conntrack
+media-libs/mesa classic -gallium gles2 X
+x11-libs/libdrm video_cards_intel
+x11-libs/gdk-pixbuf jpeg
+media-libs/freetype -bzip2
+media-video/mpv -xv -lua cli archive bluray cdda drm dvd gbm jpeg -zsh-completion
+media-video/ffmpeg -bzip2 bluray cdio fontconfig libdrm mp3 -opengl svg theora truetype vorbis vpx webp x264 x265 xvid
+virtual/ffmpeg -bzip2 bluray cdio fontconfig libdrm mp3 -opengl svg theora truetype vorbis vpx webp x264 x265 xvid
+media-libs/x264 10bit
+media-libs/libbluray aacs bdplus utils
+dev-libs/libcdio cddb
+app-arch/libarchive lz4 lzo zstd
+media-libs/libwebp gif
+media-libs/libbdplus aacs
+x11-libs/vte -crypt
+dev-libs/libpcre2 -bzip2
+#www-client/firefox debug -pgo -lto custom-cflags custom-optimization hwaccel -screenshot
+www-client/firefox -pgo -lto custom-cflags custom-optimization dbus hwaccel pulseaudio -screenshot
+media-libs/libpng apng
+media-libs/libvpx postproc
+#dev-db/sqlite secure-delete debug
+dev-db/sqlite secure-delete
+x11-libs/cairo X
+x11-libs/gtk+ X
+media-libs/libepoxy X
+#sys-libs/libunwind -static-libs
+dev-vcs/git -gpg
+gnome-base/librsvg -vala
+media-sound/apulse sdk

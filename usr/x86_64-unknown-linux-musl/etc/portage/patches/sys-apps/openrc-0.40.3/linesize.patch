@@ -1,0 +1,11 @@
+diff -urN old/src/rc/broadcast.c new/src/rc/broadcast.c
+--- old/src/rc/broadcast.c	2018-12-21 18:24:18.000000000 -0000
++++ new/src/rc/broadcast.c	2019-01-24 23:31:24.808206635 -0000
+@@ -22,6 +22,7 @@
+ #include <time.h>
+ #include <unistd.h>
+ #include <stdio.h>
++#include <utmp.h>
+ #include <utmpx.h>
+ #include <pwd.h>
+ #include <fcntl.h>

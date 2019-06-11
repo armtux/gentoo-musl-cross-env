@@ -1,0 +1,15 @@
+diff -urN gtk+-3.24.8.old/configure.ac gtk+-3.24.8/configure.ac
+--- gtk+-3.24.8.old/configure.ac	2019-05-31 08:48:47.530921045 -0000
++++ gtk+-3.24.8/configure.ac	2019-05-31 08:56:43.990929861 -0000
+@@ -1710,7 +1710,10 @@
+ # GObject introspection
+ ##################################################
+ 
+-GOBJECT_INTROSPECTION_CHECK(introspection_required_version)
++m4_ifdef([GOBJECT_INTROSPECTION_CHECK],
++	 [GOBJECT_INTROSPECTION_CHECK(introspection_required_version)],
++	 [AM_CONDITIONAL([HAVE_INTROSPECTION], [false])
++	 enable_introspection=no])
+ 
+ ##################################################
+ # colord module

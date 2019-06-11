@@ -1,0 +1,42 @@
+diff -urN termite-9999.old/Makefile termite-9999/Makefile
+--- termite-9999.old/Makefile	2019-05-31 09:32:56.500970060 -0000
++++ termite-9999/Makefile	2019-05-31 09:36:31.850974045 -0000
+@@ -1,13 +1,14 @@
+ VERSION = $(shell git describe --tags)
+ GTK = gtk+-3.0
+ VTE = vte-2.91
+-PREFIX ?= /usr/local
++PREFIX ?= /usr
+ BINDIR ?= ${PREFIX}/bin
+ DATADIR ?= ${PREFIX}/share
+ MANDIR ?= ${DATADIR}/man
+ TERMINFO ?= ${DATADIR}/terminfo
+ 
+-CXXFLAGS := -std=c++11 -O3 \
++CXXFLAGS := ${CXXFLAGS} \
++	    -std=c++11 -O3 \
+ 	    -Wall -Wextra -pedantic \
+ 	    -Winit-self \
+ 	    -Wshadow \
+@@ -22,7 +22,7 @@
+ 	    -DNDEBUG \
+ 	    -D_POSIX_C_SOURCE=200809L \
+ 	    -DTERMITE_VERSION=\"${VERSION}\" \
+-	    ${shell pkg-config --cflags ${GTK} ${VTE}} \
++	    ${shell ${CROSS_COMPILE}pkg-config --cflags ${GTK} ${VTE}} \
+ 	    ${CXXFLAGS}
+ 
+ ifeq (${CXX}, g++)
+@@ -34,10 +34,10 @@
+ endif
+ 
+ LDFLAGS := -s -Wl,--as-needed ${LDFLAGS}
+-LDLIBS := ${shell pkg-config --libs ${GTK} ${VTE}}
++LDLIBS := ${shell ${CROSS_COMPILE}pkg-config --libs ${GTK} ${VTE}}
+ 
+ termite: termite.cc url_regex.hh util/clamp.hh util/maybe.hh util/memory.hh
+-	${CXX} ${CXXFLAGS} ${LDFLAGS} $< ${LDLIBS} -o $@
++	${CROSS_COMPILE}${CXX} ${CXXFLAGS} ${LDFLAGS} $< ${LDLIBS} -o $@
+ 
+ install: termite termite.desktop termite.terminfo
+ 	mkdir -p ${DESTDIR}${TERMINFO}

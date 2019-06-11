@@ -1,0 +1,29 @@
+diff -urN old/intl/locale/LocaleService.cpp new/intl/locale/LocaleService.cpp
+--- old/intl/locale/LocaleService.cpp	2019-06-03 20:43:33.000000000 -0000
++++ new/intl/locale/LocaleService.cpp	2019-06-09 08:09:07.225753887 -0000
+@@ -542,6 +542,7 @@
+ 
+ NS_IMETHODIMP
+ LocaleService::GetDefaultLocale(nsACString& aRetVal) {
++#ifdef MOZ_UPDATER
+   // We don't allow this to change during a session (it's set at build/package
+   // time), so we cache the result the first time we're called.
+   if (mDefaultLocale.IsEmpty()) {
+@@ -556,13 +557,16 @@
+     if (SanitizeForBCP47(locale, true)) {
+       mDefaultLocale.Assign(locale);
+     }
++#endif
+ 
+     // Hard-coded fallback to allow us to survive even if update.locale was
+     // missing/broken in some way.
+-    if (mDefaultLocale.IsEmpty()) {
++    if (mDefaultLocale.IsEmpty() || mDefaultLocale.EqualsLiteral("und")) {
+       GetLastFallbackLocale(mDefaultLocale);
+     }
++#ifdef MOZ_UPDATER
+   }
++#endif
+ 
+   aRetVal = mDefaultLocale;
+   return NS_OK;
